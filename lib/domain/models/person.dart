@@ -1,5 +1,5 @@
 class Person {
-  final String id;
+  final int id;
   final String email;
   final String firstName;
   final String lastName;
@@ -14,7 +14,7 @@ class Person {
   });
 
   Person copyWith({
-    String? id,
+    int? id,
     String? email,
     String? firstName,
     String? lastName,

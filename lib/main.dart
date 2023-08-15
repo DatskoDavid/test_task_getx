@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:tesk_task_getx/data/remote_datasource.dart';
 
 import 'presentation/screens/home_screen.dart';
 
 void main() {
+  RemoteDatsource.getData();
   runApp(const MyApp());
 }
 

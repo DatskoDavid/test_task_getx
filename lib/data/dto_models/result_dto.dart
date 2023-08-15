@@ -14,4 +14,22 @@ class ResultDTO {
     required this.totalPages,
     required this.data,
   });
+
+  factory ResultDTO.fromJson(Map<String, dynamic> json) {
+    final personsJson = json['data'] as List;
+
+    final personsList = personsJson
+        .map(
+          (item) => PersonDTO.fromJson(item),
+        )
+        .toList();
+
+    return ResultDTO(
+      page: json['page'],
+      perPage: json['per_page'],
+      total: json['total'],
+      totalPages: json['total_pages'],
+      data: personsList,
+    );
+  }
 }

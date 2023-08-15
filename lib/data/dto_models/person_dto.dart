@@ -1,5 +1,5 @@
 class PersonDTO {
-  final String id;
+  final num id;
   final String email;
   final String firstName;
   final String lastName;

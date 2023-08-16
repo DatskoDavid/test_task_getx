@@ -22,4 +22,14 @@ class PersonDTO {
       avatar: json['avatar'],
     );
   }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'email': email,
+      'firstName': firstName,
+      'lastName': lastName,
+      'avatar': avatar,
+    };
+  }
 }

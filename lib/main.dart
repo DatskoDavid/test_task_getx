@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:tesk_task_getx/data/datasources/remote_datasource.dart';
+import 'package:get/get.dart';
+import 'package:tesk_task_getx/domain/di/injector.dart';
 
 import 'presentation/screens/home_screen.dart';
 
 void main() {
-  RemoteDatsource().getData(2);
+  Injector().initInjector();
   runApp(const MyApp());
 }
 
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'Test app',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),

@@ -27,8 +27,8 @@ class PersonDTO {
     return {
       'id': id,
       'email': email,
-      'firstName': firstName,
-      'lastName': lastName,
+      'first_name': firstName,
+      'last_name': lastName,
       'avatar': avatar,
     };
   }

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:tesk_task_getx/data/datasources/local_datasource.dart';
 import 'package:tesk_task_getx/data/datasources/remote_datasource.dart';
 import 'package:tesk_task_getx/platform/network_info.dart';
@@ -15,12 +17,14 @@ class PersonRepository {
     required this.networkInfo,
   });
 
-  Future<List<PersonDTO>> getAllPersons() async {
+  Future<List<PersonDTO>> getAllPersons(int page) async {
     if (await networkInfo.isConnected) {
-      final remotePersons = await remoteDatsource.getData(2);
+      print('Repository. Connected case');
+      final remotePersons = await remoteDatsource.getData(page);
       localDatasource.personsToCache(remotePersons.data);
       return remotePersons.data;
     } else {
+      print('Repository. Local case');
       final localPersons = await localDatasource.getPersonsFromCache();
       return localPersons;
     }

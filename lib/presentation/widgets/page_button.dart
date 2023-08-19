@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-class PageButton extends StatelessWidget {
+import '../../domain/controllers/home_screen_controller.dart';
+
+class PageButton extends GetView<HomeScreenController> {
   final int page;
   final Function() onTap;
 
@@ -19,7 +22,9 @@ class PageButton extends StatelessWidget {
           height: 50,
           width: 50,
           decoration: BoxDecoration(
-            color: Colors.grey[200],
+            color: controller.page.value == page
+                ? Theme.of(context).colorScheme.primary.withAlpha(150)
+                : Colors.grey[200],
             borderRadius: BorderRadius.circular(15),
           ),
           child: Center(

@@ -10,8 +10,6 @@ import 'package:tesk_task_getx/presentation/screens/person_details_screen.dart';
 import 'package:tesk_task_getx/presentation/widgets/page_button.dart';
 import 'package:tesk_task_getx/presentation/widgets/person_card.dart';
 
-import '../../data/dto_models/person_dto.dart';
-
 class HomeScreen extends GetView<HomeScreenController> {
   const HomeScreen({Key? key}) : super(key: key);
 

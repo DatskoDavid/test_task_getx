@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:tesk_task_getx/data/remote_datasource.dart';
+import 'package:tesk_task_getx/data/datasources/remote_datasource.dart';
 
 import 'presentation/screens/home_screen.dart';
 
 void main() {
-  RemoteDatsource.getData();
+  RemoteDatsource().getData(2);
   runApp(const MyApp());
 }
 
@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const HomeScreen(),
+      home: HomeScreen(),
     );
   }
 }

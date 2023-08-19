@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:tesk_task_getx/data/remote_datasource.dart';
+import 'package:tesk_task_getx/data/datasources/remote_datasource.dart';
 import 'package:tesk_task_getx/presentation/screens/person_details_screen.dart';
 import 'package:tesk_task_getx/presentation/widgets/person_card.dart';
 
+import '../../data/dto_models/person_dto.dart';
+
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  HomeScreen({Key? key}) : super(key: key);
+
+  late final List<PersonDTO> persons;
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +17,7 @@ class HomeScreen extends StatelessWidget {
         title: const Text('Home'),
       ),
       body: FutureBuilder(
-        future: RemoteDatsource.getData(),
+        future: RemoteDatsource().getData(2),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(
@@ -26,7 +30,7 @@ class HomeScreen extends StatelessWidget {
             );
           }
 
-          final personData = snapshot.data!.data;
+          persons = snapshot.data!.data;
 
           return ListView.separated(
             itemCount: 6,
@@ -43,19 +47,19 @@ class HomeScreen extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                       builder: (context) => PersonDetailsScreen(
-                        id: personData[index].id.toInt(),
-                        avatar: personData[index].avatar,
+                        id: persons[index].id.toInt(),
+                        avatar: persons[index].avatar,
                         name:
-                            '${personData[index].firstName} ${personData[index].lastName}',
-                        email: personData[index].email,
+                            '${persons[index].firstName} ${persons[index].lastName}',
+                        email: persons[index].email,
                       ),
                     ),
                   );
                 },
-                avatar: personData[index].avatar,
+                avatar: persons[index].avatar,
                 name:
-                    '${personData[index].firstName} ${personData[index].lastName}',
-                email: personData[index].email,
+                    '${persons[index].firstName} ${persons[index].lastName}',
+                email: persons[index].email,
               );
             },
           );

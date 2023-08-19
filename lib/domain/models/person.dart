@@ -29,6 +29,16 @@ class Person {
     );
   }
 
+  factory Person.fromJson(Map<String, dynamic> json) {
+    return Person(
+      id: json['id'],
+      email: json['email'],
+      firstName: json['first_name'],
+      lastName: json['last_name'],
+      avatar: json['avatar'],
+    );
+  }
+
   Map<String, dynamic> toJson() {
     return {
       'id': id,
